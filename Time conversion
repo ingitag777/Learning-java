@@ -1,0 +1,47 @@
+import java.io.*;
+import java.math.*;
+import java.text.*;
+import java.util.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    
+    static String timeConversion(String s) {
+       String[] str=s.split(":");
+       int h =Integer.parseInt(str[0]);
+
+       String min = str[1];
+       String secPeriod = str[2];
+       String sec = str[2].substring(0,secPeriod.length() - 2);
+       String period = str[2].substring(secPeriod.length() - 2, secPeriod.length());
+
+       String newstring = "";
+
+       if((0 <= h && h<12) && (period.equalsIgnoreCase("AM"))){
+           newstring = String.format("%02d", h) + ":" + min + ":" + sec;
+       }else if((0 <= h && h<12) && (period.equalsIgnoreCase("PM"))){
+           newstring = (12 + h) + ":" + min + ":" + sec;
+       }else if((h == 12) && (period.equalsIgnoreCase("AM"))){
+           newstring = "00" + ":" + min + ":" + sec;
+       }else if((h == 12) && (period.equalsIgnoreCase("PM"))){
+           newstring = h + ":" + min + ":" + sec;
+       }
+       return newstring;                            
+    }
+
+    private static final Scanner scan = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String s = scan.nextLine();
+
+        String result = timeConversion(s);
+
+        bw.write(result);
+        bw.newLine();
+
+        bw.close();
+    }
+}
