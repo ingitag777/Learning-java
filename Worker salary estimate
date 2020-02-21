@@ -1,0 +1,66 @@
+//21.02.2020
+//ingit
+//Write a class Worker and derive classes DailyWorker and SalariedWorker from it. Every worker has a name and a salary rate.
+// Write method ComPay (int hours) to compute the week pay of every worker. A Daily Worker is paid on the basis of the number of days he/she works.
+// The Salaried Worker gets paid the wage for 40 hours a week no matter what the actual hours are. Test this program to calculate the pay of workers.
+// You are expected to use the concept of polymorphism to write this program.
+
+ 
+class Worker                         //superclass
+   {
+       String name;
+       int rate;
+        Worker(int no,String n)                       //constructor
+              { rate=no; name=n; } 
+               void workerinformation()
+              {
+               System.out.println("Worker rate : "+rate);
+               System.out.println("Worker name : "+name);
+           }
+   }
+
+
+class DailyWorker extends Worker                //derived class 1
+{
+     int rate;
+     DailyWorker(int no,String n,int r)
+     {
+     super(no,n);
+      rate=r;
+     }
+       void compay(int h)
+         {
+         workerinformation(); 
+        System.out.println("Salary : "+rate*h);
+          }
+}
+
+
+class SalariedWorker extends Worker                            //derived class 2
+{
+     int rate;
+    SalariedWorker(int no,String n,int r)
+    {
+        super(no,n);
+        rate=r;
+    }
+    int hour=40;
+        void compay()
+         {
+         workerinformation();
+         System.out.println("Salary : "+rate*hour);
+          }
+}
+
+
+class Workerclass
+{
+        public static void main(String args[])
+        {
+               DailyWorker d=new DailyWorker(200,"Ingit",70);
+              SalariedWorker s=new SalariedWorker(700,"Vaasu",50);
+              d.compay(45);
+              s.compay();          
+         }
+
+}
