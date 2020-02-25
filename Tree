@@ -1,0 +1,42 @@
+import java.util.*;
+import java.io.*;
+
+class Node {
+    Node left;
+    Node right;
+    int data;
+    
+    Node(int data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+}
+
+class Solution {
+
+
+
+    public static void preOrder(Node root) {
+ if(root == null){
+             return;
+         }
+         Stack<Node> stack = new Stack();
+         stack.add(root);
+
+         while(!stack.isEmpty()){
+             Node current_node = stack.pop();
+             System.out.print(current_node.data + " ");
+
+             if(current_node.right != null){
+                 stack.add(current_node.right);
+             }
+
+             if(current_node.left != null){
+                 stack.add(current_node.left);
+             }
+
+         }
+    }
+
+	public static Node insert(Node root, int data) {
