@@ -1,0 +1,45 @@
+// Using join() to wait for threads to finish.
+class NewThread extends Thread {
+	NewThread(String name)
+	{
+			super(name);
+	}
+	// This is the entry point for thread.
+	public void run() {
+		try {
+			for(int i = 5; i > 0; i--) {
+				System.out.println(this.getName() + ": " + i);
+				Thread.sleep(1000);
+			}
+		} catch (InterruptedException e) {
+			System.out.println(this.getName() + " interrupted.");
+		}
+		System.out.println(this.getName() + " exiting.");
+	}
+}
+public class Example6 {
+	public static void main(String args[]) {
+		NewThread ob1 = new NewThread("One");
+		NewThread ob2 = new NewThread("Two");
+		NewThread ob3 = new NewThread("Three");
+		ob1.start();
+		ob2.start();
+		ob3.start();
+		System.out.println("Thread One is alive: "+ ob1.isAlive());
+		System.out.println("Thread Two is alive: "+ ob2.isAlive());
+		System.out.println("Thread Three is alive: "+ ob3.isAlive());
+		// wait for threads to finish
+		/*try {
+			System.out.println("Waiting for threads to finish.");
+			ob1.join();
+			ob2.join();
+			ob3.join();
+		} catch (InterruptedException e) {
+			System.out.println("Main thread Interrupted");
+		}*/
+		System.out.println("Thread One is alive: "+ ob1.isAlive());
+		System.out.println("Thread Two is alive: "+ ob2.isAlive());
+		System.out.println("Thread Three is alive: "+ ob3.isAlive());
+		System.out.println("Main thread exiting.");
+	}
+}
