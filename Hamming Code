@@ -51,3 +51,22 @@ static int[] generateCode(String str, int M, int r)
   
         return ar; 
     } 
+    public static void main(String[] args) 
+    { 
+  
+        // input message 
+        String str = "0101"; 
+        int M = str.length(); 
+        int r = 1; 
+  
+        while (Math.pow(2, r) < (M + r + 1)) { 
+            // r is number of redundant bits 
+            r++; 
+        } 
+        int[] ar = generateCode(str, M, r); 
+  
+        System.out.println("Generated hamming code "); 
+        ar = calculation(ar, r); 
+        print(ar); 
+    } 
+} 
