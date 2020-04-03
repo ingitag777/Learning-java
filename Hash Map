@@ -1,0 +1,46 @@
+import java.util.*;
+
+import java.util.Map.Entry;
+
+
+
+public class Exp9Hashmap {
+	public static void main(String args[]) {
+		HashMap<Integer,String> h = new HashMap<Integer,String>();
+		h.put(1, "Ingit");
+		h.put(2, "Hridyanshu");
+		h.put(3, "Jatin");
+		System.out.println(h);
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter key:");
+		int n = sc.nextInt();
+		if(h.containsKey(n)) {
+			System.out.println("Key Found");
+		}
+		else
+		{
+			System.out.println("Key Not Found");
+		}
+		System.out.println("Enter value:");
+		String v = sc.next();
+		if(h.containsValue(v)) {
+			System.out.println("Value Found");
+		}
+		else
+		{
+			System.out.println("Value Not Found");
+		}
+		
+		Set<Integer> keys = h.keySet();
+		for(Integer key: keys) {
+			System.out.println(key);
+		}
+		
+		Set<Entry<Integer,String>> setEntry = h.entrySet();
+		Iterator<Entry<Integer,String>> itr = setEntry.iterator();
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+		
+	}
+}
